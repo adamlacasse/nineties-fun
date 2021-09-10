@@ -1,0 +1,35 @@
+$start-menu-width: 300px;
+
+.start-menu {
+  top: 50px;
+  left: 5px;
+  width: $start-menu-width !important;
+
+  li {
+    justify-content: flex-start;
+    margin: 0.5rem 0;
+
+    img {
+      max-height: 100%;
+      margin-right: 0.5rem;
+    }
+
+    .arrow-right {
+      height: 0;
+      width: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid black;
+
+      margin-left: auto;
+    }
+
+    &:hover .arrow-right {
+      border-left: 10px solid white;
+    }
+  }
+
+  .divider {
+    margin: 0.75rem 0;
+  }
+}
