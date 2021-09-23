@@ -22,7 +22,7 @@ const StartMenu = () => {
           onMouseEnter={() => setBiographyPanelOpen(true)}
           onMouseLeave={() => setBiographyPanelOpen(false)}
         >
-          <img src={globeIcon} />
+          <img src={globeIcon} alt="globe icon" />
           <span>Biography</span>
           <div class="arrow-right" />
         </ListItem>
@@ -30,7 +30,7 @@ const StartMenu = () => {
           onMouseEnter={() => setExperiencePanelOpen(true)}
           onMouseLeave={() => setExperiencePanelOpen(false)}
         >
-          <img src={resumeIcon} />
+          <img src={resumeIcon} alt="resume icon" />
           <span>Experience</span>
           <div class="arrow-right" />
         </ListItem>
@@ -38,7 +38,7 @@ const StartMenu = () => {
           onMouseEnter={() => setProjectsPanelOpen(true)}
           onMouseLeave={() => setProjectsPanelOpen(false)}
         >
-          <img src={folderWithTools} />
+          <img src={folderWithTools} alt="folder with tools" />
           <span>Project Samples</span>
           <div class="arrow-right" />
         </ListItem>
@@ -46,7 +46,7 @@ const StartMenu = () => {
         <ListItem
           onClick={() => alert('This does nothing!')}
         >
-          <img src={pcIcon} />
+          <img src={pcIcon} alt="PC icon" />
           <span>Restart</span>
         </ListItem>
       </List>

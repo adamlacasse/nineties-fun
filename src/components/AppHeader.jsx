@@ -9,7 +9,7 @@ const AppHeader = ({ startMenuOpen, setStartMenuOpen }) => (
       <Bar size={35}>
         <div id="app-header-content">
           <Button onClick={() => setStartMenuOpen(!startMenuOpen)}>
-            <img src={windowsLogo} />
+            <img src={windowsLogo} alt="Windows logo" />
             <span>Start</span>
           </Button>
           <h1>Adam LaCasse, Software Engineer</h1>
