@@ -1,0 +1,19 @@
+.window {
+  position: absolute;
+  top: 10vh;
+  left: 5vw;
+
+  .window-header {
+    display: flex;
+    align-items: center;
+
+    button {
+        margin-left: auto;
+        
+        span {
+            color: black;
+            font-weight: bold;
+        }
+    }
+  }
+}
