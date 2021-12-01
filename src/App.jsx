@@ -30,12 +30,12 @@ const GlobalStyles = createGlobalStyle`
 
 const App = () => {
   const [startMenuOpen, setStartMenuOpen] = useState(false);
-  const [showLoader, setShowLoader] = useState(true);
-  const [count, setCount] = useState(500);
+  const [showInitialLoader, setShowInitialLoader] = useState(true);
+  const [count, setCount] = useState(6);
 
   useEffect(() => {
     if (count < 0) {
-      return setShowLoader(false);
+      return setShowInitialLoader(false);
     };
 
     const intervalId = setInterval(() => {
@@ -44,6 +44,8 @@ const App = () => {
 
     return () => clearInterval(intervalId);
   }, [count]);
+
+  const loaderTopText = 'Loading...';
 
   const loaderBottomText = (
     <section className="loader-bottom">
@@ -62,8 +64,8 @@ const App = () => {
       <ThemeProvider theme={original}>
         <AppHeader startMenuOpen={startMenuOpen} setStartMenuOpen={setStartMenuOpen} />
         <main>
-          {startMenuOpen && <StartMenu />}
-          {showLoader && <LoadingModal bottomText={loaderBottomText} />}
+          {startMenuOpen && <StartMenu showInitialLoader={showInitialLoader} setshowInitialLoader={setShowInitialLoader} />}
+          {showInitialLoader && <LoadingModal topText={loaderTopText} bottomText={loaderBottomText} />}
         </main>
       </ThemeProvider>
     </>

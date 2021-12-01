@@ -11,13 +11,28 @@ import LoadingModal from "./LoadingModal";
 
 import "./StartMenu.scss";
 
-const StartMenu = () => {
+const StartMenu = (props) => {
   const [biographyPanelOpen, setBiographyPanelOpen] = useState(false);
   const [experiencePanelOpen, setExperiencePanelOpen] = useState(false);
   const [projectsPanelOpen, setProjectsPanelOpen] = useState(false);
   const [startMenuLoaderOpen, setStartMenuLoaderOpen] = useState(false);
 
-  const loaderBottomText = <p>Restarting your computer...</p>;
+  const toggleLoader = () => {
+    if (props.showInitialLoader) {
+      props.setshowInitialLoader(false);
+    }
+    setStartMenuLoaderOpen(!startMenuLoaderOpen);
+  };
+
+  const loaderTopText = 'Restarting your computer...';
+
+  const loaderBottomText = (
+    <section className="loader-bottom">
+      <p>
+        Again, just kidding. Click Restart once more to close this Loader.
+      </p>
+    </section>
+  );
 
   return (
     <>
@@ -53,7 +68,7 @@ const StartMenu = () => {
             </ListItem>
             <Divider className="divider" />
             <ListItem
-              onClick={() => setStartMenuLoaderOpen(!startMenuLoaderOpen)}
+              onClick={toggleLoader}
             >
               <img src={pcIcon} alt="PC icon" />
               <span>Restart</span>
@@ -64,7 +79,7 @@ const StartMenu = () => {
       {biographyPanelOpen && <BiographyPanel />}
       {experiencePanelOpen && <ExperiencePanel />}
       {projectsPanelOpen && <ProjectsPanel />}
-      {startMenuLoaderOpen && <LoadingModal bottomText={loaderBottomText} />}
+      {startMenuLoaderOpen && <LoadingModal topText={loaderTopText} bottomText={loaderBottomText} />}
     </>
   );
 };
