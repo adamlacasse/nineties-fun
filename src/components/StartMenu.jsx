@@ -29,7 +29,7 @@ const StartMenu = (props) => {
   const loaderBottomText = (
     <section className="loader-bottom">
       <p>
-        Again, just kidding. Click Restart once more to close this Loader.
+        Again, just kidding. Click Start or Restart once more to close this Loader.
       </p>
     </section>
   );
