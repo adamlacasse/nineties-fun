@@ -1,5 +1,13 @@
 @import "./Panel.scss";
+@import "../StartMenu.scss";
 
-.biography {
-    top: -150px;
+#biography {
+    top: -240px;
+    left: 350px;
+    z-index: $start-menu-zindex;
+    min-height: 44px;
+
+    &.hidden {
+        display: none;
+    }
 }

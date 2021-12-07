@@ -1,8 +1,11 @@
 $start-menu-width: 300px;
+$start-menu-zindex: 100;
 
 .start-menu {
-  position: relative;
+  position: absolute;
   top: 50px;
+  z-index: $start-menu-zindex;
+  max-width: $start-menu-width;
 
   &-contents {
     display: flex;

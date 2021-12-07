@@ -33,7 +33,7 @@ const App = () => {
   const [startMenuOpen, setStartMenuOpen] = useState(false);
   const [showInitialLoader, setShowInitialLoader] = useState(true);
   const [count, setCount] = useState(6);
-  const [displayedWindows, setDisplayedWindows] = useState(['generic']);
+  const [displayedWindows, setDisplayedWindows] = useState([]);
 
   useEffect(() => {
     if (count < 0) {
@@ -69,6 +69,8 @@ const App = () => {
             <StartMenu
               showInitialLoader={showInitialLoader}
               setshowInitialLoader={setShowInitialLoader}
+              displayedWindows={displayedWindows}
+              setDisplayedWindows={setDisplayedWindows}
             />
           )}
           {showInitialLoader && (
