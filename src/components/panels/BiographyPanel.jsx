@@ -2,15 +2,16 @@ import { List, ListItem } from "react95";
 
 import "./BiographyPanel.scss";
 
-const BiographyPanel = ({ biographyPanelState, biographyPanelState: { mouseInListItem, mouseInPanel }, setBiographyPanelState, displayedWindows, setDisplayedWindows }) => {
+const BiographyPanel = ({ showBiographyPanel, setShowBiographyPanel, displayedWindows, setDisplayedWindows }) => {
   return (
     <List 
-      className={`panel ${mouseInListItem || mouseInPanel ? '' : 'hidden'}`} 
+      className={`panel ${showBiographyPanel ? '' : 'hidden'}`} 
       id="biography"
-      onMouseLeave={() => setBiographyPanelState({ ...biographyPanelState, mouseInPanel: false })}
+      onMouseEnter={() => setShowBiographyPanel(true)}
+      onMouseLeave={() => setShowBiographyPanel(false)}
       onClick={() => {
         setDisplayedWindows([...displayedWindows, 'generic']);
-        setBiographyPanelState({ mouseInListItem: false, mouseInPanel: false });
+        setShowBiographyPanel(false);
       }}
     >
       <ListItem>Biography!</ListItem>

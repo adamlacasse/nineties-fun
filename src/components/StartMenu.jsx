@@ -13,7 +13,7 @@ import "./StartMenu.scss";
 
 const StartMenu = (props) => {
   const [startMenuLoaderOpen, setStartMenuLoaderOpen] = useState(false);
-  const [biographyPanelState, setBiographyPanelState] = useState({ mouseInListItem: false, mouseInPanel: false });
+  const [showBiographyPanel, setShowBiographyPanel] = useState(false);
 
   const toggleLoader = () => {
     if (props.showInitialLoader) {
@@ -40,11 +40,9 @@ const StartMenu = (props) => {
             Windows<span>95</span>
           </div>
           <div className="list-item-container">
-            {/* TODO: If mouse is moved to panel, keep it open. If it is moved somehwere else, close it */}
             <ListItem 
-              onMouseEnter={() => setBiographyPanelState({ ...biographyPanelState, mouseInListItem: true})}
-              onMouseLeave={() => setBiographyPanelState({ ...biographyPanelState, mouseInListItem: false })}
-            >
+              onMouseEnter={() => setShowBiographyPanel(true)}
+              onMouseLeave={() => setShowBiographyPanel(false)}            >
                 <img src={globeIcon} alt="globe icon" />
                 <span>Biography</span>
                 <div class="arrow-right" />
@@ -72,8 +70,8 @@ const StartMenu = (props) => {
 
 
       <BiographyPanel
-        biographyPanelState={biographyPanelState} 
-        setBiographyPanelState={setBiographyPanelState}
+        showBiographyPanel={showBiographyPanel} 
+        setShowBiographyPanel={setShowBiographyPanel}
         displayedWindows={props.displayedWindows}
         setDisplayedWindows={props.setDisplayedWindows}
       />
