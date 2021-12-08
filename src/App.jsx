@@ -8,6 +8,7 @@ import StartMenu from "./components/StartMenu";
 import AppHeader from "./components/AppHeader";
 import LoadingModal from "./components/LoadingModal";
 import WindowGeneric from "./components/windows/WindowGeneric";
+import WindowBiography from "./components/windows/WindowBiography";
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
@@ -92,6 +93,12 @@ const App = () => {
             )}
             {displayedWindows.includes("generic") && (
               <WindowGeneric
+                displayedWindows={displayedWindows}
+                setDisplayedWindows={setDisplayedWindows}
+              />
+            )}
+            {displayedWindows.includes("biography") && (
+              <WindowBiography
                 displayedWindows={displayedWindows}
                 setDisplayedWindows={setDisplayedWindows}
               />

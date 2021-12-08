@@ -13,7 +13,7 @@ const ExperiencePanel = ({
   return (
     <List
       className={`panel ${showExperiencePanel ? "" : "hidden"}`}
-      id="experience"
+      id="experience-panel"
       onMouseEnter={() => setshowExperiencePanel(true)}
       onMouseLeave={() => setshowExperiencePanel(false)}
       onClick={() => {

@@ -29,7 +29,7 @@ const StartMenu = (props) => {
   const loaderBottomText = (
     <section className="loader-bottom">
       <p>
-        Again, just kidding. Click anywhere on the desktop to close this Loader.
+        Again, just kidding. Click anywhere on the "desktop" to close this Loader.
       </p>
     </section>
   );

@@ -13,7 +13,7 @@ const ProjectsPanel = ({
   return (
     <List
       className={`panel ${showProjectsPanel ? "" : "hidden"}`}
-      id="projects"
+      id="projects-panel"
       onMouseEnter={() => setShowProjectsPanel(true)}
       onMouseLeave={() => setShowProjectsPanel(false)}
       onClick={() => {

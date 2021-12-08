@@ -3,7 +3,6 @@ import {
   Window,
   Button,
   WindowHeader,
-  Toolbar,
   WindowContent,
   Panel,
 } from "react95";

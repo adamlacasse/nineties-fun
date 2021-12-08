@@ -13,11 +13,11 @@ const BiographyPanel = ({
   return (
     <List
       className={`panel ${showBiographyPanel ? "" : "hidden"}`}
-      id="biography"
+      id="biography-panel"
       onMouseEnter={() => setShowBiographyPanel(true)}
       onMouseLeave={() => setShowBiographyPanel(false)}
       onClick={() => {
-        setDisplayedWindows([...displayedWindows, "generic"]);
+        setDisplayedWindows([...displayedWindows, "biography"]);
         setStartMenuOpen(false);
       }}
     >
