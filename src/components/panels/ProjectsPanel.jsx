@@ -1,12 +1,32 @@
-import { List, ListItem, Divider, Panel } from "react95";
+import { List, ListItem } from "react95";
+import folderWithTools from "../../img/folder_tools.png";
 
 import "./ProjectsPanel.scss";
 
-const ProjectsPanel = (props) => {
+const ProjectsPanel = ({
+  showProjectsPanel,
+  setShowProjectsPanel,
+  displayedWindows,
+  setDisplayedWindows,
+  setStartMenuOpen,
+}) => {
   return (
-    <Panel className="panel projects">
-      <h1>Projects!</h1>
-    </Panel>
+    <List
+      className={`panel ${showProjectsPanel ? "" : "hidden"}`}
+      id="projects"
+      onMouseEnter={() => setShowProjectsPanel(true)}
+      onMouseLeave={() => setShowProjectsPanel(false)}
+      onClick={() => {
+        setDisplayedWindows([...displayedWindows, "generic"]);
+        setShowProjectsPanel(false);
+        setStartMenuOpen(false);
+      }}
+    >
+      <ListItem>
+        <img src={folderWithTools} alt="folder with tools" />
+        <span>Project Samples</span>
+      </ListItem>
+    </List>
   );
 };
 

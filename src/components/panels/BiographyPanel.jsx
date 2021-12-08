@@ -1,20 +1,30 @@
 import { List, ListItem } from "react95";
+import globeIcon from "../../img/globe.png";
 
 import "./BiographyPanel.scss";
 
-const BiographyPanel = ({ showBiographyPanel, setShowBiographyPanel, displayedWindows, setDisplayedWindows }) => {
+const BiographyPanel = ({
+  showBiographyPanel,
+  setShowBiographyPanel,
+  displayedWindows,
+  setDisplayedWindows,
+  setStartMenuOpen,
+}) => {
   return (
-    <List 
-      className={`panel ${showBiographyPanel ? '' : 'hidden'}`} 
+    <List
+      className={`panel ${showBiographyPanel ? "" : "hidden"}`}
       id="biography"
       onMouseEnter={() => setShowBiographyPanel(true)}
       onMouseLeave={() => setShowBiographyPanel(false)}
       onClick={() => {
-        setDisplayedWindows([...displayedWindows, 'generic']);
-        setShowBiographyPanel(false);
+        setDisplayedWindows([...displayedWindows, "generic"]);
+        setStartMenuOpen(false);
       }}
     >
-      <ListItem>Biography!</ListItem>
+      <ListItem>
+        <img src={globeIcon} alt="globe icon" />
+        <span>Biography</span>
+      </ListItem>
     </List>
   );
 };

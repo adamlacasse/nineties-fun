@@ -1,12 +1,32 @@
-import { List, ListItem, Divider, Panel } from "react95";
+import { List, ListItem } from "react95";
+import resumeIcon from "../../img/resume.png";
 
 import "./ExperiencePanel.scss";
 
-const ExperiencePanel = (props) => {
+const ExperiencePanel = ({
+  showExperiencePanel,
+  setshowExperiencePanel,
+  displayedWindows,
+  setDisplayedWindows,
+  setStartMenuOpen,
+}) => {
   return (
-    <Panel className="panel experience">
-      <h1>Experience!</h1>
-    </Panel>
+    <List
+      className={`panel ${showExperiencePanel ? "" : "hidden"}`}
+      id="experience"
+      onMouseEnter={() => setshowExperiencePanel(true)}
+      onMouseLeave={() => setshowExperiencePanel(false)}
+      onClick={() => {
+        setDisplayedWindows([...displayedWindows, "generic"]);
+        setshowExperiencePanel(false);
+        setStartMenuOpen(false);
+      }}
+    >
+      <ListItem>
+        <img src={resumeIcon} alt="resume icon" />
+        <span>Experience</span>
+      </ListItem>
+    </List>
   );
 };
 

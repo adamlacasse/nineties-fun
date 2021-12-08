@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { List, ListItem, Divider } from "react95";
 import resumeIcon from "../img/resume.png";
 import pcIcon from "../img/pc.ico";
@@ -14,6 +14,8 @@ import "./StartMenu.scss";
 const StartMenu = (props) => {
   const [startMenuLoaderOpen, setStartMenuLoaderOpen] = useState(false);
   const [showBiographyPanel, setShowBiographyPanel] = useState(false);
+  const [showExperiencePanel, setShowExperiencePanel] = useState(false);
+  const [showProjectsPanel, setShowProjectsPanel] = useState(false);
 
   const toggleLoader = () => {
     if (props.showInitialLoader) {
@@ -27,7 +29,7 @@ const StartMenu = (props) => {
   const loaderBottomText = (
     <section className="loader-bottom">
       <p>
-        Again, just kidding. Click Start or Restart once more to close this Loader.
+        Again, just kidding. Click anywhere on the desktop to close this Loader.
       </p>
     </section>
   );
@@ -42,17 +44,24 @@ const StartMenu = (props) => {
           <div className="list-item-container">
             <ListItem 
               onMouseEnter={() => setShowBiographyPanel(true)}
-              onMouseLeave={() => setShowBiographyPanel(false)}            >
+              onMouseLeave={() => setShowBiographyPanel(false)}
+            >
                 <img src={globeIcon} alt="globe icon" />
                 <span>Biography</span>
                 <div class="arrow-right" />
             </ListItem>
-            <ListItem>
+            <ListItem
+                onMouseEnter={() => setShowExperiencePanel(true)}
+                onMouseLeave={() => setShowExperiencePanel(false)}   
+            >
               <img src={resumeIcon} alt="resume icon" />
               <span>Experience</span>
               <div class="arrow-right" />
             </ListItem>
-            <ListItem>
+            <ListItem
+              onMouseEnter={() => setShowProjectsPanel(true)}
+              onMouseLeave={() => setShowProjectsPanel(false)}   
+            >
               <img src={folderWithTools} alt="folder with tools" />
               <span>Project Samples</span>
               <div class="arrow-right" />
@@ -74,10 +83,22 @@ const StartMenu = (props) => {
         setShowBiographyPanel={setShowBiographyPanel}
         displayedWindows={props.displayedWindows}
         setDisplayedWindows={props.setDisplayedWindows}
+        setStartMenuOpen={props.setStartMenuOpen}
       />
-
-      <ExperiencePanel />
-      <ProjectsPanel />
+      <ExperiencePanel
+        showExperiencePanel={showExperiencePanel}
+        setshowExperiencePanel={setShowExperiencePanel}
+        displayedWindows={props.displayedWindows}
+        setDisplayedWindows={props.setDisplayedWindows}
+        setStartMenuOpen={props.setStartMenuOpen}
+      />
+      <ProjectsPanel
+        showProjectsPanel={showProjectsPanel}
+        setShowProjectsPanel={setShowProjectsPanel}
+        displayedWindows={props.displayedWindows}
+        setDisplayedWindows={props.setDisplayedWindows}
+        setStartMenuOpen={props.setStartMenuOpen}
+      />
 
       {startMenuLoaderOpen && (
         <LoadingModal topText={loaderTopText} bottomText={loaderBottomText} />

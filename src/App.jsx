@@ -24,6 +24,9 @@ const GlobalStyles = createGlobalStyle`
   }
   body {
     font-family: 'ms_sans_serif';
+  }
+  #desktop {
+    min-height: 100vh;
     background-color: teal;
   }
   ${styleReset}
@@ -35,6 +38,7 @@ const App = () => {
   const [count, setCount] = useState(6);
   const [displayedWindows, setDisplayedWindows] = useState([]);
 
+  // Handle loader logic
   useEffect(() => {
     if (count < 0) {
       return setShowInitialLoader(false);
@@ -47,6 +51,7 @@ const App = () => {
     return () => clearInterval(intervalId);
   }, [count]);
 
+  // loader props
   const loaderTopText = "Loading...";
 
   const loaderBottomText = (
@@ -71,15 +76,27 @@ const App = () => {
               setshowInitialLoader={setShowInitialLoader}
               displayedWindows={displayedWindows}
               setDisplayedWindows={setDisplayedWindows}
+              setStartMenuOpen={setStartMenuOpen}
             />
           )}
-          {showInitialLoader && (
-            <LoadingModal
-              topText={loaderTopText}
-              bottomText={loaderBottomText}
-            />
-          )}
-          {displayedWindows.includes('generic') && <WindowGeneric displayedWindows={displayedWindows} setDisplayedWindows={setDisplayedWindows} />}
+          <section id="desktop" onClick={() => {
+            if (startMenuOpen) {
+              setStartMenuOpen(false);
+            }
+          }}>
+            {showInitialLoader && (
+              <LoadingModal
+                topText={loaderTopText}
+                bottomText={loaderBottomText}
+              />
+            )}
+            {displayedWindows.includes("generic") && (
+              <WindowGeneric
+                displayedWindows={displayedWindows}
+                setDisplayedWindows={setDisplayedWindows}
+              />
+            )}
+          </section>
         </main>
       </ThemeProvider>
     </>

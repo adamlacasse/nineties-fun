@@ -1,5 +1,22 @@
 @import "../StartMenu.scss";
 
 .panel {
-  min-width: $start-menu-width;
+  z-index: $start-menu-zindex;
+  min-height: 44px;
+
+  li {
+    justify-content: flex-start;
+
+    img {
+      max-height: 60%;
+    }
+
+    span {
+      margin-left: 0.5rem;
+    }
+  }
+
+  &.hidden {
+    display: none;
+  }
 }
