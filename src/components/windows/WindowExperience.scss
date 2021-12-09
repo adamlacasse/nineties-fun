@@ -1,0 +1,14 @@
+@import "./Window.scss";
+
+#experience {
+  top: 90px;
+  left: 50px;
+
+  .title-panel {
+    min-width: 500px;
+  }
+
+  p {
+    margin-top: .5rem;
+  }
+}

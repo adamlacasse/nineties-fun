@@ -17,7 +17,7 @@ const ExperiencePanel = ({
       onMouseEnter={() => setshowExperiencePanel(true)}
       onMouseLeave={() => setshowExperiencePanel(false)}
       onClick={() => {
-        setDisplayedWindows([...displayedWindows, "generic"]);
+        setDisplayedWindows([...displayedWindows, "experience"]);
         setshowExperiencePanel(false);
         setStartMenuOpen(false);
       }}
