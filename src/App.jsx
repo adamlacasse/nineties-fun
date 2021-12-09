@@ -7,7 +7,6 @@ import ms_sans_serif_bold from "react95/dist/fonts/ms_sans_serif_bold.woff2";
 import StartMenu from "./components/StartMenu";
 import AppHeader from "./components/AppHeader";
 import LoadingModal from "./components/LoadingModal";
-import WindowGeneric from "./components/windows/WindowGeneric";
 import WindowBiography from "./components/windows/WindowBiography";
 
 const GlobalStyles = createGlobalStyle`
@@ -80,27 +79,25 @@ const App = () => {
               setStartMenuOpen={setStartMenuOpen}
             />
           )}
-          <section id="desktop" onClick={() => {
-            if (startMenuOpen) {
-              setStartMenuOpen(false);
-            }
-          }}>
+          <section
+            id="desktop"
+            onClick={() => {
+              if (startMenuOpen) {
+                setStartMenuOpen(false);
+              }
+            }}
+          >
             {showInitialLoader && (
               <LoadingModal
                 topText={loaderTopText}
                 bottomText={loaderBottomText}
               />
             )}
-            {displayedWindows.includes("generic") && (
-              <WindowGeneric
-                displayedWindows={displayedWindows}
-                setDisplayedWindows={setDisplayedWindows}
-              />
-            )}
             {displayedWindows.includes("biography") && (
               <WindowBiography
                 displayedWindows={displayedWindows}
                 setDisplayedWindows={setDisplayedWindows}
+                windowId="biography"
               />
             )}
           </section>

@@ -1,31 +1,53 @@
-import { useEffect } from "react";
-import { Window, Button, WindowHeader, WindowContent, Panel } from "react95";
+import { useEffect, useState, useRef } from "react";
+import {
+  Window,
+  Button,
+  WindowHeader,
+  WindowContent,
+  Panel,
+} from "react95";
 
 import "./WindowBiography.scss";
 
 import moveAndResizeWindow from "../../helpers/moveAndResizeWindow";
 
-export default function (props) {
+export default function WindowBiography(props) {
   useEffect(() => {
-    moveAndResizeWindow("biography-window");
-  }, []);
+    const returnObj = moveAndResizeWindow(props.windowId);
+
+    return () => {
+      const { windowHeader, handleWindowMove } = returnObj;
+      windowHeader.removeEventListener('mousedown', handleWindowMove);
+    }
+  }, [props.windowId]);
+
+  const [windowHasFocus, setWindowHasFocus] = useState(true);
+  const windowRef = useRef(null);
+
+  useEffect(() => {
+    const checkIfClickedOutside = e => {
+      if (windowRef.current && !windowRef.current.contains(e.target)) {
+        setWindowHasFocus(false)
+      }
+    }
+
+    document.addEventListener("mousedown", checkIfClickedOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", checkIfClickedOutside)
+    }
+  }, [windowHasFocus]);
 
   return (
-    <Window resizable className="window" id="biography-window">
-      <WindowHeader className="window-header">
-        <span>My Biography</span>
-        <Button
-          onClick={() =>
-            props.setDisplayedWindows(
-              props.displayedWindows.filter((window) => window !== "biography")
-            )
-          }
-        >
+    <Window resizable className="window" id={props.windowId} ref={windowRef} onMouseDown={() => setWindowHasFocus(true)}>
+      <WindowHeader active={windowHasFocus} className="window-header">
+        <span>My Professional Background</span>
+        <Button onClick={() => props.setDisplayedWindows(props.displayedWindows.filter(window => window !== props.windowId))}>
           <span className="close-icon">X</span>
         </Button>
       </WindowHeader>
       <WindowContent>
-        <article>
+      <article>
           <p>
             I'm a{" "}
             <span className="emphasized-words">

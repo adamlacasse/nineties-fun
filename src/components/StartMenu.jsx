@@ -48,7 +48,7 @@ const StartMenu = (props) => {
             >
                 <img src={globeIcon} alt="globe icon" />
                 <span>Biography</span>
-                <div class="arrow-right" />
+                <div className="arrow-right" />
             </ListItem>
             <ListItem
                 onMouseEnter={() => setShowExperiencePanel(true)}
@@ -56,7 +56,7 @@ const StartMenu = (props) => {
             >
               <img src={resumeIcon} alt="resume icon" />
               <span>Experience</span>
-              <div class="arrow-right" />
+              <div className="arrow-right" />
             </ListItem>
             <ListItem
               onMouseEnter={() => setShowProjectsPanel(true)}
@@ -64,7 +64,7 @@ const StartMenu = (props) => {
             >
               <img src={folderWithTools} alt="folder with tools" />
               <span>Project Samples</span>
-              <div class="arrow-right" />
+              <div className="arrow-right" />
             </ListItem>
 
             <Divider className="divider" />

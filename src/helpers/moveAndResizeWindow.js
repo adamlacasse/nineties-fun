@@ -1,4 +1,4 @@
-export default function(elementId) {
+export default function moveAndResizeWindow(elementId) {
     const el = document.getElementById(elementId);
 
     // Handle Moving a Window
@@ -56,4 +56,9 @@ export default function(elementId) {
             window.removeEventListener('mouseup', handleMouseUp);    
         }
     }
+
+    return {
+        windowHeader,
+        handleWindowMove
+    };
 };
