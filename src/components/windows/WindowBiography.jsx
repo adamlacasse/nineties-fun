@@ -27,7 +27,7 @@ export default function WindowBiography(props) {
   useEffect(() => {
     const checkIfClickedOutside = e => {
       if (windowRef.current && !windowRef.current.contains(e.target)) {
-        setWindowHasFocus(false)
+        setWindowHasFocus(false);
       }
     }
 
@@ -39,7 +39,14 @@ export default function WindowBiography(props) {
   }, [windowHasFocus]);
 
   return (
-    <Window resizable className="window" id={props.windowId} ref={windowRef} onMouseDown={() => setWindowHasFocus(true)}>
+    <Window 
+      resizable 
+      className="window" 
+      id={props.windowId} 
+      ref={windowRef} 
+      onMouseDown={() => setWindowHasFocus(true)}
+      style={{ zIndex: windowHasFocus ? 100 : 0 }}
+    >
       <WindowHeader active={windowHasFocus} className="window-header">
         <span>My Professional Background</span>
         <Button onClick={() => props.setDisplayedWindows(props.displayedWindows.filter(window => window !== props.windowId))}>
