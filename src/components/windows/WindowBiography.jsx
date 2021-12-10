@@ -4,7 +4,6 @@ import {
   Button,
   WindowHeader,
   WindowContent,
-  Panel,
 } from "react95";
 
 import "./WindowBiography.scss";
@@ -110,9 +109,6 @@ export default function WindowBiography(props) {
           </p>
         </article>
       </WindowContent>
-      <Panel variant="well" className="footer">
-        Put some useful informations here
-      </Panel>
     </Window>
   );
 }

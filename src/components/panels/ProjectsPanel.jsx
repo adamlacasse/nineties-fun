@@ -17,7 +17,7 @@ const ProjectsPanel = ({
       onMouseEnter={() => setShowProjectsPanel(true)}
       onMouseLeave={() => setShowProjectsPanel(false)}
       onClick={() => {
-        setDisplayedWindows([...displayedWindows, "farts"]);
+        setDisplayedWindows([...displayedWindows, "projects"]);
         setShowProjectsPanel(false);
         setStartMenuOpen(false);
       }}

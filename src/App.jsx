@@ -9,6 +9,7 @@ import AppHeader from "./components/AppHeader";
 import LoadingModal from "./components/LoadingModal";
 import WindowBiography from "./components/windows/WindowBiography";
 import WindowExperience from "./components/windows/WindowExperience";
+import WindowProjects from "./components/windows/WindowProjects";
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
@@ -106,6 +107,13 @@ const App = () => {
                 displayedWindows={displayedWindows}
                 setDisplayedWindows={setDisplayedWindows}
                 windowId="experience"
+              />
+            )}
+            {displayedWindows.includes("projects") && (
+              <WindowProjects
+                displayedWindows={displayedWindows}
+                setDisplayedWindows={setDisplayedWindows}
+                windowId="projects"
               />
             )}
           </section>
