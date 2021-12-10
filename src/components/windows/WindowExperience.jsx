@@ -39,6 +39,7 @@ export default function WindowExperience(props) {
       id={props.windowId}
       ref={windowRef}
       onMouseDown={() => setWindowHasFocus(true)}
+      style={{ zIndex: windowHasFocus ? 1 : 0 }}
     >
       <WindowHeader active={windowHasFocus} className="window-header">
         <span>My Professional Experience</span>
@@ -129,7 +130,7 @@ export default function WindowExperience(props) {
             </li>
             <br />
             <li>
-              <h3>
+              <h3 className="emphasized-words">
                 <a
                   href="https://www.devinemillimet.com/"
                   target="_blank"
@@ -139,7 +140,7 @@ export default function WindowExperience(props) {
                 </a>
               </h3>
               <Panel variant="well" className="title-panel">
-                <h3>Director of Administration</h3>
+                <h3 className="emphasized-words">Director of Administration</h3>
                 <h4>July 2015 to March 2018</h4>
               </Panel>
               <p>
@@ -149,7 +150,7 @@ export default function WindowExperience(props) {
             </li>
             <br />
             <li>
-              <h3>
+              <h3 className="emphasized-words">
                 <a
                   href="https://www.brownrudnick.com/"
                   target="_blank"
@@ -159,7 +160,7 @@ export default function WindowExperience(props) {
                 </a>
               </h3>
             <Panel variant="well" className="title-panel">
-              <h3>Director of Financial Planning & Analysis</h3>
+              <h3 className="emphasized-words">Director of Financial Planning & Analysis</h3>
               <h4>February 2005 to June 2015</h4>
             </Panel>
               <p>

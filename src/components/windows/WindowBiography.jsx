@@ -44,7 +44,7 @@ export default function WindowBiography(props) {
       id={props.windowId} 
       ref={windowRef} 
       onMouseDown={() => setWindowHasFocus(true)}
-      style={{ zIndex: windowHasFocus ? 100 : 0 }}
+      style={{ zIndex: windowHasFocus ? 1 : 0 }}
     >
       <WindowHeader active={windowHasFocus} className="window-header">
         <span>My Professional Background</span>

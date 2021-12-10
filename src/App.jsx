@@ -35,12 +35,21 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const App = () => {
-  const [startMenuOpen, setStartMenuOpen] = useState(false);
   const [showInitialLoader, setShowInitialLoader] = useState(true);
   const [count, setCount] = useState(6);
+
+  const [startMenuOpen, setStartMenuOpen] = useState(false);
+
   const [displayedWindows, setDisplayedWindows] = useState([]);
 
-  // Handle loader logic
+  const [showStartMenuLoader, setShowStartMenuLoader] = useState(false);
+  const toggleStartMenuLoader = () => {
+    if (showInitialLoader) {
+      setShowInitialLoader(false);
+    }
+    setShowStartMenuLoader(!showStartMenuLoader);
+  };
+
   useEffect(() => {
     if (count < 0) {
       return setShowInitialLoader(false);
@@ -53,13 +62,22 @@ const App = () => {
     return () => clearInterval(intervalId);
   }, [count]);
 
-  // loader props
-  const loaderTopText = "Loading...";
+  const initialLoaderTopText = "Loading...";
 
-  const loaderBottomText = (
+  const initialLoaderBottom = (
     <section className="loader-bottom">
       <p>Just kidding; this Loader doesn't do anything.</p>
       <p>Joke ending in {`${count} second${count !== 1 ? "s" : ""}`}</p>
+    </section>
+  );
+
+  const startMenuLoaderTopText = "Restarting your computer...";
+
+  const startMenuLoaderBottom = (
+    <section className="loader-bottom">
+      <p>
+        Again, just kidding. Click anywhere on the "desktop" to close this Loader.
+      </p>
     </section>
   );
 
@@ -74,25 +92,32 @@ const App = () => {
         <main>
           {startMenuOpen && (
             <StartMenu
-              showInitialLoader={showInitialLoader}
-              setshowInitialLoader={setShowInitialLoader}
+              setStartMenuOpen={setStartMenuOpen}
               displayedWindows={displayedWindows}
               setDisplayedWindows={setDisplayedWindows}
-              setStartMenuOpen={setStartMenuOpen}
+              showStartMenuLoader={showStartMenuLoader}
+              toggleStartMenuLoader={toggleStartMenuLoader}
             />
           )}
           <section
             id="desktop"
             onClick={() => {
-              if (startMenuOpen) {
-                setStartMenuOpen(false);
-              }
+              setStartMenuOpen(false);
+              setShowStartMenuLoader(false);
             }}
           >
             {showInitialLoader && (
               <LoadingModal
-                topText={loaderTopText}
-                bottomText={loaderBottomText}
+                topText={initialLoaderTopText}
+                bottomText={initialLoaderBottom}
+                zIndex={0}
+              />
+            )}
+            {showStartMenuLoader && (
+              <LoadingModal
+                topText={startMenuLoaderTopText}
+                bottomText={startMenuLoaderBottom}
+                zIndex={2}
               />
             )}
             {displayedWindows.includes("biography") && (

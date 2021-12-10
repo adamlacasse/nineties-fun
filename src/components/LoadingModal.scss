@@ -1,13 +1,16 @@
-#loading-modal-container {
-    position: absolute;
-    top: 35vh;
-    left: 25vw;
+.loading-modal-container {
+    position: fixed;
+    background: rgba(62, 62, 68, .6);
+    top: 50px;
+    height: 94.5vh;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
+    pointer-events: none;
 
-    #loading-modal {
-        background: rgb(198, 198, 198);
+    .loading-modal {
+        background: rgba(192, 192, 192, 1);
         box-shadow: inset 1px 1px 0px 1px #dfdfdf, inset -1px -1px 0 1px #848584;
         padding: 1rem;
         width: 50vw;

@@ -7,32 +7,13 @@ import globeIcon from "../img/globe.png";
 import BiographyPanel from "./panels/BiographyPanel";
 import ExperiencePanel from "./panels/ExperiencePanel";
 import ProjectsPanel from "./panels/ProjectsPanel";
-import LoadingModal from "./LoadingModal";
 
 import "./StartMenu.scss";
 
 const StartMenu = (props) => {
-  const [startMenuLoaderOpen, setStartMenuLoaderOpen] = useState(false);
   const [showBiographyPanel, setShowBiographyPanel] = useState(false);
   const [showExperiencePanel, setShowExperiencePanel] = useState(false);
   const [showProjectsPanel, setShowProjectsPanel] = useState(false);
-
-  const toggleLoader = () => {
-    if (props.showInitialLoader) {
-      props.setshowInitialLoader(false);
-    }
-    setStartMenuLoaderOpen(!startMenuLoaderOpen);
-  };
-
-  const loaderTopText = "Restarting your computer...";
-
-  const loaderBottomText = (
-    <section className="loader-bottom">
-      <p>
-        Again, just kidding. Click anywhere on the "desktop" to close this Loader.
-      </p>
-    </section>
-  );
 
   return (
     <section className="start-menu">
@@ -69,9 +50,9 @@ const StartMenu = (props) => {
 
             <Divider className="divider" />
 
-            <ListItem onClick={toggleLoader}>
+            <ListItem onClick={props.toggleStartMenuLoader}>
               <img src={pcIcon} alt="PC icon" />
-              <span>Restart</span>
+              <span>{props.showStartMenuLoader ? 'End Joke' : 'Restart'}</span>
             </ListItem>
           </div>
         </div>
@@ -99,10 +80,6 @@ const StartMenu = (props) => {
         setDisplayedWindows={props.setDisplayedWindows}
         setStartMenuOpen={props.setStartMenuOpen}
       />
-
-      {startMenuLoaderOpen && (
-        <LoadingModal topText={loaderTopText} bottomText={loaderBottomText} />
-      )}
     </section>
   );
 };
