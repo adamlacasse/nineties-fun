@@ -3,11 +3,11 @@ import { Window, Button, WindowHeader, WindowContent } from "react95";
 
 import "./WindowProjects.scss";
 
-import moveAndResizeWindow from "../../helpers/moveAndResizeWindow";
+import moveElement from "../../helpers/moveElement";
 
 export default function WindowProjects(props) {
   useEffect(() => {
-    const returnObj = moveAndResizeWindow(props.windowId);
+    const returnObj = moveElement(props.windowId);
 
     return () => {
       const { windowHeader, handleWindowMove } = returnObj;
@@ -34,7 +34,6 @@ export default function WindowProjects(props) {
 
   return (
     <Window
-      resizable
       className="window"
       id={props.windowId}
       ref={windowRef}

@@ -1,4 +1,4 @@
-export default function moveAndResizeWindow(elementId) {
+export default function moveElement(elementId) {
     const el = document.getElementById(elementId);
 
     // Handle Moving a Window
@@ -27,33 +27,6 @@ export default function moveAndResizeWindow(elementId) {
         function handleMouseUp() {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseup', handleMouseUp);
-        }
-    }
-
-    // Handle Resizing a Window
-    const resizer = el.querySelector('[data-testid="resizeHandle"]');
-    resizer.addEventListener('mousedown', handleWindowResize);
-
-    function handleWindowResize(mousedownEvent) {
-        let prevX = mousedownEvent.clientX;
-        let prevY = mousedownEvent.clientY;
-
-        window.addEventListener('mousemove', handleMouseMove);
-        window.addEventListener('mouseup', handleMouseUp);
-
-        function handleMouseMove(mousemoveEvent) {
-            const rect = el.getBoundingClientRect();
-
-            el.style.width = rect.width - (prevX - mousemoveEvent.clientX) + "px";
-            el.style.height = rect.height - (prevY - mousemoveEvent.clientY) + "px";
-
-            prevX = mousemoveEvent.clientX;
-            prevY = mousemoveEvent.clientY;
-        }
-
-        function handleMouseUp() {
-            window.removeEventListener('mousemove', handleMouseMove);
-            window.removeEventListener('mouseup', handleMouseUp);    
         }
     }
 

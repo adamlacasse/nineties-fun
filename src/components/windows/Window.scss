@@ -2,6 +2,7 @@
   position: absolute !important;
   overflow: hidden;
   width: 75vw;
+  resize: both;
 
   &-header {
     display: flex;
